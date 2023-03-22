@@ -1,0 +1,61 @@
+{% extends "base_manager.html" %}
+{% block content %}
+    <div class="table-responsive" id="tablecontainer">
+        <form action="{% url 'change_student_info' %}" method="post"
+              role="search">
+            {% csrf_token %}
+
+            <input value="{{ sid }}" hidden name="student_id">
+
+            <div class="input-group input-group-lg" style="margin: 20px 0">
+                <span class="input-group-addon" id="sizing-addon1">姓名</span>
+                <input type="text" class="form-control" placeholder="姓名" name="name" value="{{ student.name }}"
+                       aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg" style="margin: 20px 0">
+                <span class="input-group-addon" id="sizing-addon1">性别</span>
+                <input type="text" class="form-control" placeholder="性别" name="sex" value="{{ student.sex }}"
+                       aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg" style="margin: 20px 0">
+                <span class="input-group-addon" id="sizing-addon1">出生年月</span>
+                <input type="text" class="form-control" placeholder="出生年月" name="birth_day"
+                       value="{{ student.birth_day }}"
+                       aria-describedby="sizing-addon1">
+            </div>
+
+            <div class="input-group input-group-lg" style="margin: 20px 0">
+                <span class="input-group-addon" id="sizing-addon1">籍贯</span>
+                <input type="text" class="form-control" placeholder="籍贯" name="native_place"
+                       value="{{ student.native_place }}"
+                       aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg" style="margin: 20px 0">
+                <span class="input-group-addon" id="sizing-addon1">专业-班级</span>
+                <select class="form-control" name="clazz">
+                    {% for row in clazzs %}
+                        {% if row.id == current_clazz_id %}
+                            <option value="{{ row.id }}"
+                                    selected="selected">{{ row.major_id.name }}-{{ row.name }}</option>
+                        {% else %}
+                            <option value="{{ row.id }}">{{ row.major_id.name }}-{{ row.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">修 改</button>
+
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="panel panel-warning">
+                            <div class="panel-body">
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}

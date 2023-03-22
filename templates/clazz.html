@@ -1,0 +1,28 @@
+{% extends "base_manager.html" %}
+{% block content %}
+    <div class="table-responsive" id="tablecontainer">
+        <table border="1" class="table table-striped table-bordered table-hover"
+               style="width: 1000px; border-collapse: collapse;">
+            <thead>
+            <tr>
+                <td>专业代码</td>
+                <td>专业名</td>
+                <td>班级名</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for clazz in clazzs %}
+                <tr>
+                    <td>{{ clazz.major_id.major_code }}</td>
+                    <td>{{ clazz.major_id.name }}</td>
+                    <td>{{ clazz.name }}</td>
+                    <td><a class="btn btn-primary" href="/change_clazz_time_table/?clazz_id={{ clazz.id }}" role="button">修改课表</a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

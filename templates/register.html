@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+    <title>注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="style-2">
+<div class="container">
+    <div class="copyrights">Power By 大地破坏者·盖亚</div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form action="/register/" method="post" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+                {% csrf_token %}
+
+                <h2>注 册</h2>
+                <div class="form-group">
+                    <label for="username" class="sr-only">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+
+                    <label for="password-again" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="password-again" name="password-again"
+                           placeholder="Password" autocomplete="off">
+                </div>
+                <div class="form-group">
+
+                    <label for="remember"><input type="radio" id="remember" name='cus_typ' value="0"> Student</label>
+                    <label for="remember"><input type="radio" id="remember" name='cus_typ' value="1"> Teacher</label>
+                    <label for="remember"><input type="radio" id="remember" name='cus_typ' value="2">
+                        Administrator</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="注 册" class="btn btn-primary">
+                </div>
+                <a href="/login/">去登录</a>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 60px; clear: both;">
+        <div class="col-md-12 text-center"><p><small>Power By 大地破坏者·盖亚</small></p></div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="/static/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- Placeholder -->
+<script src="/static/js/jquery.placeholder.min.js"></script>
+<!-- Waypoints -->
+<script src="/static/js/jquery.waypoints.min.js"></script>
+</body>
+</html>

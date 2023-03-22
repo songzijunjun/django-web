@@ -1,0 +1,37 @@
+{% extends "base_manager.html" %}
+{% block content %}
+
+    <div class="table-responsive" id="tablecontainer">
+        <table border="1" class="table table-striped table-bordered table-hover"
+               style="width: 1000px; border-collapse: collapse;">
+            <thead>
+            <tr>
+                <td>老师工号</td>
+                <td>老师姓名</td>
+                <td>性别</td>
+                <td>出生年份</td>
+                <td>查看详情</td>
+                                <td>操作</td>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for student in teachers %}
+                <tr>
+                    <td>{{ student.teacher_id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.sex }}</td>
+                    <td>{{ student.birth_day }}</td>
+                    <td style="cursor: pointer;"><a
+                            href="/change_teacher_info/?teacher_id={{ student.id }}">修改信息</a></td>
+                <td style="cursor: pointer;"><a
+                            href="javascript:void(0);" onclick="deleteTeacher({{ student.id }})">删除</a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

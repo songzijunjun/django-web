@@ -1,0 +1,42 @@
+{% extends "base_manager.html" %}
+{% block content %}
+    <div class="table-responsive" id="tablecontainer">
+        <form action="{% url 'change_teacher_info' %}" method="post"
+              role="search">
+            {% csrf_token %}
+
+            <input value="{{ teacher.id }}" hidden name="teacher_id">
+
+            <div class="input-group input-group-lg" style="margin: 20px 0">
+                <span class="input-group-addon" id="sizing-addon1">姓名</span>
+                <input type="text" class="form-control" placeholder="姓名" name="name" value="{{ teacher.name }}"
+                       aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg" style="margin: 20px 0">
+                <span class="input-group-addon" id="sizing-addon1">性别</span>
+                <input type="text" class="form-control" placeholder="性别" name="sex" value="{{ teacher.sex }}"
+                       aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg" style="margin: 20px 0">
+                <span class="input-group-addon" id="sizing-addon1">出生年月</span>
+                <input type="text" class="form-control" placeholder="出生年月" name="birth_day"
+                       value="{{ teacher.birth_day }}"
+                       aria-describedby="sizing-addon1">
+            </div>
+
+            <button type="submit" class="btn btn-primary">修 改</button>
+
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="panel panel-warning">
+                            <div class="panel-body">
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
